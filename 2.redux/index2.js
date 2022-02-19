@@ -1,6 +1,7 @@
-const { createStore } = require("redux");
+const { createStore, applyMiddleware } = require("redux");
 const reducer = require("./reducers");
-const { logIn, logOut, addPost } = require("./actions/action");
+const { addPost } = require("./actions/post");
+const { logIn, logOut } = require("./actions/user");
 
 const initialState = {
   user: {
@@ -8,14 +9,16 @@ const initialState = {
     data: null,
   },
   posts: [],
-  comments: [],
-  favorites: [],
-  history: [],
-  likes: [],
-  followers: [],
 };
 
-const store = createStore(reducer, initialState);
+const firstMiddleware = (store) => (dispatch) => (action) => {
+  console.log("액션 로깅", action);
+  dispatch(action);
+  console.log("액션 끝", action);
+};
+const enhancer = applyMiddleware(firstMiddleware);
+
+const store = createStore(reducer, initialState, enhancer);
 store.subscribe(() => {
   console.log("changed");
 });
