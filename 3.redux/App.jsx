@@ -1,12 +1,14 @@
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+const { logIn } = require("./actions/user");
+
 const App = () => {
   const user = useSelector((state) => state.user.data);
   const dispatch = useDispatch();
 
   const onClick = useCallback(() => {
-    dispatch(loginIn({ id: "zerocho", password: "비밀번호" }));
+    dispatch(logIn({ id: "zerocho", password: "비밀번호" }));
   }, []);
 
   return (

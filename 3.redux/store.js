@@ -1,7 +1,7 @@
 const { createStore, applyMiddleware } = require("redux");
 const reducer = require("./reducers");
-const { addPost } = require("./actions/post");
-const { logIn, logOut } = require("./actions/user");
+// const { addPost } = require("./actions/post");
+// const { logIn, logOut } = require("./actions/user");
 
 const initialState = {
   user: {
@@ -25,7 +25,10 @@ const thunkMiddleware = (store) => (next) => (action) => {
   return next(action); //동기
 };
 
-const enhancer = applyMiddleware(firstMiddleware, thunkMiddleware);
+const middlewares = [];
+middlewares.push(firstMiddleware);
+middlewares.push(thunkMiddleware);
+const enhancer = compose(applyMiddleware(...middlewares));
 
 const store = createStore(reducer, initialState, enhancer);
 
