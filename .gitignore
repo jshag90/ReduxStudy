@@ -3,3 +3,5 @@
 /node_modules/redux/src
 /3.redux/node_modules
 /3.redux/node_modules/*
+/4.react-redux-immer/node_modules
+/4.react-redux-immer/node_modules/*
