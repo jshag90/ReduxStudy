@@ -5,3 +5,5 @@
 /3.redux/node_modules/*
 /4.react-redux-immer/node_modules
 /4.react-redux-immer/node_modules/*
+/5.redux-toolkit/node_modules
+/5.redux-toolkit/node_modules/*
